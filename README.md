@@ -243,35 +243,35 @@ docker compose restart web
 # Stop all containers
 docker compose down
 
-
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Page](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/1.jpg)
+![Home Page](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/1.jpg)
 
 ### 📋 Input Form
-![Input Form](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/2.jpg)
+![Input Form](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/2.jpg)
 
 ### 🤖 AI Plan Generation
-![AI Plan](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/3.jpg)
+![AI Plan](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/3.jpg)
 
 ### 🗣️ Voice / TTS Feature
-![Voice](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/4.jpg)
+![Voice Feature](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/4.jpg)
 
 ### 🖼️ Image Generation
-![Image Generation](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/5.jpg)
+![Image Generation](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/5.jpg)
 
 ### 🌗 Dark Mode
-![Dark Mode](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/6.jpg)
+![Dark Mode](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/6.jpg)
 
-### 📄 Exported PDF
-![PDF Export](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/7.jpg)
+### 📄 Export as PDF
+![PDF Export](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/7.jpg)
 
 ### 💾 Saved Plan Example
-![Saved Plan](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/8.jpg)
+![Saved Plan](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/8.jpg)
 
 ### 💬 Motivation Quotes
-![Quotes](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/9.jpg)
+![Motivation Quotes](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/9.jpg)
+
 
 📜 License
 This project is licensed under the MIT License.
