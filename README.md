@@ -243,6 +243,9 @@ docker compose restart web
 # Stop all containers
 docker compose down
 
+<img src="https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/3.jpg" width="700" />
+
+
 ![1](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/1.jpg)
 
 ### 🗣️ Voice / TTS Feature
