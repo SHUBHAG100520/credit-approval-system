@@ -243,29 +243,20 @@ docker compose restart web
 # Stop all containers
 docker compose down
 
-<img src="https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/3.jpg" width="700" />
 
 
 ![1](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/1.jpg)
 
-### 🗣️ Voice / TTS Feature
-![Voice Feature](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/4.jpg)
+![2](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/10.jpg))
 
-### 🖼️ Image Generation
-![Image Generation](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/5.jpg)
+![3](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/2.jpg)
 
-### 🌗 Dark Mode
-![Dark Mode](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/6.jpg)
+![4](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/3.jpg)
 
-### 📄 Export as PDF
-![PDF Export](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/7.jpg)
+![5](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/4.jpg)
+![6](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/5.jpg)
 
-### 💾 Saved Plan Example
-![Saved Plan](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/8.jpg)
-
-### 💬 Motivation Quotes
-![Motivation Quotes](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/9.jpg)
-
+![7](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/6.jpg)
 
 
 📜 License
