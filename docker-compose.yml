@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-creditdb}
+      POSTGRES_USER: ${POSTGRES_USER:-credituser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-creditpass}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+  web:
+    build: .
+    command: bash -lc "python manage.py makemigrations && python manage.py migrate && gunicorn creditapp.wsgi:application --bind 0.0.0.0:8000"
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+      - redis
+  worker:
+    build: .
+    command: celery -A creditapp worker -l info
+    env_file: .env
+    volumes:
+      - ./:/app
+    depends_on:
+      - web
+      - redis
+  beat:
+    build: .
+    command: celery -A creditapp beat -l info
+    env_file: .env
+    volumes:
+      - ./:/app
+    depends_on:
+      - web
+      - redis
+volumes:
+  pgdata:
