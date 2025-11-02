@@ -243,8 +243,7 @@ docker compose restart web
 # Stop all containers
 docker compose down
 
-### 🤖 AI Plan Generation
-![AI Plan](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/3.jpg)
+![1](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/1.jpg)
 
 ### 🗣️ Voice / TTS Feature
 ![Voice Feature](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/4.jpg)
