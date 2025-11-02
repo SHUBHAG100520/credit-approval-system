@@ -1,123 +1,136 @@
-🏦 Credit Approval System
+# 🏦 Credit Approval System
 
-A Django + Docker-based Credit Approval System that evaluates customers’ eligibility, registers users, and manages loan creation and tracking — all through REST APIs tested via Postman.
+A **Django + Docker-based Credit Approval System** that automates customer registration, eligibility checks, loan creation, and viewing loan details — all via REST APIs.  
+Tested using **Postman**, this project demonstrates a complete API workflow integrated with **PostgreSQL**, **Redis**, and **Celery** using **Docker Compose**.
 
-🧩 Table of Contents
+---
 
-Overview
+## 📚 Table of Contents
+1. [Overview](#overview)
+2. [Tech Stack](#tech-stack)
+3. [System Architecture](#system-architecture)
+4. [Setup & Installation](#setup--installation)
+5. [Running the Project](#running-the-project)
+6. [API Endpoints](#api-endpoints)
+7. [Example API Requests](#example-api-requests)
+8. [Testing with Postman](#testing-with-postman)
+9. [Screenshots](#screenshots)
+10. [Common Issues & Fixes](#common-issues--fixes)
+11. [License](#license)
+12. [Author](#author)
 
-Tech Stack
+---
 
-System Architecture
+## 🧠 Overview
 
-Setup & Installation
+The **Credit Approval System** is designed to streamline the loan approval process using a rules-based engine.  
+It lets users:
+- Register new customers
+- Check their loan eligibility
+- Create and approve loans automatically based on credit policy
+- View loan details and history
 
-Running the Project
+The project runs seamlessly inside Docker containers and exposes a simple REST API for all actions.
 
-API Endpoints
+---
 
-Testing with Postman
+## ⚙️ Tech Stack
 
-Screenshots
+| Component | Technology Used |
+|------------|----------------|
+| **Backend** | Django 5.2 |
+| **API Framework** | Django REST Framework |
+| **Database** | PostgreSQL |
+| **Cache / Broker** | Redis |
+| **Task Queue** | Celery |
+| **Containerization** | Docker & Docker Compose |
+| **Testing** | Postman |
+| **Language** | Python 3.11 |
 
-Common Issues & Fixes
+---
 
-License
+## 🏗️ System Architecture
 
-⚙️ Overview
-
-This project automates the process of credit approval and loan management using machine learning logic (credit rules) integrated with Django REST APIs.
-
-It enables:
-
-Registering new customers
-
-Checking loan eligibility
-
-Creating and viewing loans
-
-Managing loans in PostgreSQL via Docker containers
-
-The APIs are tested using Postman and can easily be extended for production deployments.
-
-🧠 Tech Stack
-Component	Technology Used
-Backend Framework	Django 5.2
-API Layer	Django REST Framework
-Database	PostgreSQL
-Caching / Task Queue	Redis + Celery
-Containerization	Docker + Docker Compose
-API Testing	Postman
-Language	Python 3.11
-🏗️ System Architecture
 +-------------------+
-|   Postman Client  |
+| Postman Client |
 +---------+---------+
-          |
-          v
+|
+v
 +---------+---------+
-|   Django (Web)    |  <-- Runs Gunicorn in Docker
-|-------------------|
-|   REST APIs       |
-|   Business Logic  |
-|   Celery Worker   |
+
+Django Web Server
+REST APIs
+Business Logic
+Celery Worker
 +---------+---------+
-          |
-          v
+
+markdown
+Copy code
+      |
+      v
 +---------+---------+
-| PostgreSQL (DB)   |
+| PostgreSQL (DB) |
 +-------------------+
-| Redis (Broker)    |
+| Redis (Broker) |
 +-------------------+
 
-⚙️ Setup & Installation
-1️⃣ Clone the Repository
+yaml
+Copy code
+
+---
+
+## 🛠️ Setup & Installation
+
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/<your-username>/credit-approval-system.git
 cd credit-approval-system
-
 2️⃣ Build Docker Containers
+bash
+Copy code
 docker compose build
-
-3️⃣ Run Containers
+3️⃣ Run the Containers
+bash
+Copy code
 docker compose up
+After successful setup:
 
+Web App → http://localhost:8000
 
-Once running:
-
-Django Web App → http://localhost:8000
-
-PostgreSQL → port 5432
+Database (Postgres) → port 5432
 
 Redis → port 6379
 
 ▶️ Running the Project (Inside Docker)
+To open a shell inside the web container:
 
-To access the Django shell:
-
+bash
+Copy code
 docker compose exec web bash
+Apply database migrations:
 
-
-To apply migrations (if needed):
-
+bash
+Copy code
 python manage.py migrate
+Create a Django admin superuser:
 
-
-To create a superuser:
-
+bash
+Copy code
 python manage.py createsuperuser
-
 🔗 API Endpoints
 Endpoint	Method	Description
 /register/	POST	Register a new customer
-/check-eligibility/	POST	Check loan eligibility
-/create-loan/	POST	Create a loan (approved/rejected based on credit rules)
+/check-eligibility/	POST	Check if a customer is eligible for a loan
+/create-loan/	POST	Create a loan based on eligibility and policies
 /view-loan/<loan_id>/	GET	View details of a specific loan
-/view-loans/<customer_id>/	GET	View all loans for a customer
-📬 Example API Requests
-🧾 Register a Customer
+/view-loans/<customer_id>/	GET	View all loans for a given customer
 
+🧾 Example API Requests
+✅ Register a Customer
 POST /register/
 
+json
+Copy code
 {
   "first_name": "Shubham",
   "last_name": "Agarwal",
@@ -125,10 +138,10 @@ POST /register/
   "age": 28,
   "monthly_income": 80000
 }
-
-
 Response:
 
+json
+Copy code
 {
   "customer_id": 34,
   "name": "Shubham Agarwal",
@@ -137,34 +150,42 @@ Response:
   "approved_limit": 2000000,
   "phone_number": "9998887770"
 }
-
 💰 Create a Loan
-
 POST /create-loan/
 
+json
+Copy code
 {
   "customer_id": 34,
   "loan_amount": 100000,
   "interest_rate": 10,
   "tenure": 12
 }
+Response (Approved):
 
-
-Response:
-
+json
+Copy code
 {
   "loan_id": 7,
   "loan_approved": true,
   "message": "Loan approved successfully.",
   "monthly_installment": 8791.59
 }
+Response (Rejected):
 
+json
+Copy code
+{
+  "loan_id": null,
+  "loan_approved": false,
+  "message": "Loan not approved based on credit policy.",
+  "monthly_installment": 43957.94
+}
 🧾 View Loan Details
-
 GET /view-loan/7/
 
-Response:
-
+json
+Copy code
 {
   "loan_id": 7,
   "customer_id": 34,
@@ -173,16 +194,30 @@ Response:
   "monthly_installment": 8791.59,
   "status": "Approved"
 }
+📊 View All Loans for a Customer
+GET /view-loans/34/
 
+json
+Copy code
+[
+  {
+    "loan_id": 7,
+    "loan_amount": 100000,
+    "loan_approved": true
+  },
+  {
+    "loan_id": 8,
+    "loan_amount": 500000,
+    "loan_approved": false
+  }
+]
 🧪 Testing with Postman
-
-All API endpoints were tested using Postman.
+All APIs can be tested easily in Postman.
 
 Steps:
-
 Open Postman.
 
-Create a new collection called Credit Approval System.
+Create a collection called Credit Approval System.
 
 Add the following requests:
 
@@ -196,36 +231,53 @@ GET /view-loan/<loan_id>
 
 GET /view-loans/<customer_id>
 
-Set Body → raw → JSON
+Choose Body → raw → JSON for POST requests.
 
-Click Send to test each API.
+Click Send to execute.
 
 🖼️ Screenshots
 Description	Screenshot
 ✅ Register API Success	
+❌ Loan Rejected Response	
+✅ Loan Approved	
+🧾 View Loan Details	
+🐳 Docker Containers Running	
 
-❌ Invalid Loan Request	
+📸 Replace screenshots/... with the actual image filenames from your Postman or Docker screenshots.
 
-✅ Approved Loan	
-
-🧾 View Loan	
-
-⚙️ Docker Containers	
-
-📸 Replace the image paths above with your actual screenshot filenames from Postman and Docker.
-
-🧰 Common Issues & Fixes
+⚙️ Common Issues & Fixes
 Issue	Cause	Fix
-404 Not Found	Using /view-loan/<loan_id>/ literally	Replace <loan_id> with actual numeric ID (e.g. /view-loan/7/)
-loan_id: null	Loan not approved	Try smaller loan_amount or higher income
-Postman “Invalid protocol”	Wrong URL or missing http://	Use http://localhost:8000/... exactly
-curl not found	Curl not installed inside Docker	Run apt-get install curl
-📜 License
+404 Not Found	Using /view-loan/<loan_id>/ literally	Replace <loan_id> with a real number (e.g. /view-loan/7/)
+loan_id = null	Loan not approved	Try reducing loan_amount or increasing income
+“Invalid protocol” in Postman	Incorrect URL	Always start with http://localhost:8000/...
+curl not found	Curl not installed in Docker	Run apt-get install curl inside the web container
+Database not connecting	Containers not running	Run docker compose up before API testing
 
-This project is licensed under the MIT License — feel free to use and modify it for your learning or production use.
+🧰 Useful Docker Commands
+bash
+Copy code
+# List running containers
+docker ps
+
+# Enter Django container shell
+docker compose exec web bash
+
+# Restart web container
+docker compose restart web
+
+# Stop all containers
+docker compose down
+📜 License
+This project is licensed under the MIT License.
+Feel free to use, modify, and distribute this code for personal or educational use.
 
 👨‍💻 Author
-
 Shubham Agarwal
-💼 Developer | Data Enthusiast | API Automation Learner
+💼 Backend Developer | Data & API Enthusiast
 📧 shubhag0411@gmail.com
+🌐 GitHub Profile
+
+
+git add README.md
+git commit -m "Added detailed README with setup, API, and screenshots"
+git push
