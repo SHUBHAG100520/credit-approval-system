@@ -25,10 +25,10 @@ Tested using **Postman**, this project demonstrates a complete API workflow inte
 
 The **Credit Approval System** is designed to streamline the loan approval process using a rules-based engine.  
 It lets users:
-- Register new customers
-- Check their loan eligibility
-- Create and approve loans automatically based on credit policy
-- View loan details and history
+- Register new customers  
+- Check their loan eligibility  
+- Create and approve loans automatically based on credit policy  
+- View loan details and history  
 
 The project runs seamlessly inside Docker containers and exposes a simple REST API for all actions.
 
@@ -52,25 +52,18 @@ The project runs seamlessly inside Docker containers and exposes a simple REST A
 ## 🏗️ System Architecture
 
 +-------------------+
-| Postman Client |
+| Postman |
 +---------+---------+
 |
 v
 +---------+---------+
-
-Django Web Server
-REST APIs
-Business Logic
-Celery Worker
+| Django Backend |
+| REST API + Celery |
 +---------+---------+
-
-markdown
-Copy code
-      |
-      v
-+---------+---------+
-| PostgreSQL (DB) |
+|
+v
 +-------------------+
+| PostgreSQL (DB) |
 | Redis (Broker) |
 +-------------------+
 
@@ -102,7 +95,7 @@ Database (Postgres) → port 5432
 Redis → port 6379
 
 ▶️ Running the Project (Inside Docker)
-To open a shell inside the web container:
+Open a shell inside the web container:
 
 bash
 Copy code
@@ -112,7 +105,7 @@ Apply database migrations:
 bash
 Copy code
 python manage.py migrate
-Create a Django admin superuser:
+Create a Django superuser:
 
 bash
 Copy code
@@ -121,9 +114,9 @@ python manage.py createsuperuser
 Endpoint	Method	Description
 /register/	POST	Register a new customer
 /check-eligibility/	POST	Check if a customer is eligible for a loan
-/create-loan/	POST	Create a loan based on eligibility and policies
+/create-loan/	POST	Create a loan based on eligibility
 /view-loan/<loan_id>/	GET	View details of a specific loan
-/view-loans/<customer_id>/	GET	View all loans for a given customer
+/view-loans/<customer_id>/	GET	View all loans for a specific customer
 
 🧾 Example API Requests
 ✅ Register a Customer
@@ -138,7 +131,7 @@ Copy code
   "age": 28,
   "monthly_income": 80000
 }
-Response:
+Response
 
 json
 Copy code
@@ -161,7 +154,7 @@ Copy code
   "interest_rate": 10,
   "tenure": 12
 }
-Response (Approved):
+Response (Approved)
 
 json
 Copy code
@@ -171,7 +164,7 @@ Copy code
   "message": "Loan approved successfully.",
   "monthly_installment": 8791.59
 }
-Response (Rejected):
+Response (Rejected)
 
 json
 Copy code
@@ -194,32 +187,14 @@ Copy code
   "monthly_installment": 8791.59,
   "status": "Approved"
 }
-📊 View All Loans for a Customer
-GET /view-loans/34/
-
-json
-Copy code
-[
-  {
-    "loan_id": 7,
-    "loan_amount": 100000,
-    "loan_approved": true
-  },
-  {
-    "loan_id": 8,
-    "loan_amount": 500000,
-    "loan_approved": false
-  }
-]
 🧪 Testing with Postman
-All APIs can be tested easily in Postman.
-
 Steps:
-Open Postman.
 
-Create a collection called Credit Approval System.
+Open Postman
 
-Add the following requests:
+Create a collection named Credit Approval System
+
+Add requests:
 
 POST /register
 
@@ -231,37 +206,27 @@ GET /view-loan/<loan_id>
 
 GET /view-loans/<customer_id>
 
-Choose Body → raw → JSON for POST requests.
+For POST requests, choose Body → raw → JSON
 
-Click Send to execute.
+Click Send to execute
 
 🖼️ Screenshots
 Description	Screenshot
 ✅ Register API Success	
-❌ Loan Rejected Response	
-✅ Loan Approved	
+💰 Loan Approved	
+❌ Loan Rejected	
 🧾 View Loan Details	
-🐳 Docker Containers Running
-
-![WhatsApp Image 2025-11-02 at 09 42 05_9eee6c52](https://github.com/user-attachments/assets/67355235-ead7-4896-93ca-f9f1c32a21ee)
-![WhatsApp Image 2025-11-02 at 09 43 40_3c636fda](https://github.com/user-attachments/assets/8938808a-db38-4503-9a6e-a9206d82b4a0)
-
-
-
+🐳 Docker Containers Running	
+⚙️ Common Issues Fix Examples	
+✅ Final Working Output	
 
 ⚙️ Common Issues & Fixes
 Issue	Cause	Fix
-404 Not Found	Using /view-loan/<loan_id>/ literally	Replace <loan_id> with a real number (e.g. /view-loan/7/)
-loan_id = null	Loan not approved	Try reducing loan_amount or increasing income
-“Invalid protocol” in Postman	Incorrect URL	Always start with http://localhost:8000/...
-curl not found	Curl not installed in Docker	Run apt-get install curl inside the web container
-Database not connecting	Containers not running	Run docker compose up before API testing
-
-![WhatsApp Image 2025-11-02 at 09 52 11_76b99345](https://github.com/user-attachments/assets/73e2b96b-a497-427a-bbd6-3e37801f9655)
-![WhatsApp Image 2025-11-02 at 09 46 06_7393e0d7](https://github.com/user-attachments/assets/424f4fc4-05fa-4697-8630-fa6d865dcf29)
-![WhatsApp Image 2025-11-02 at 09 52 59_f9ae9110](https://github.com/user-attachments/assets/46d04d28-2f8c-4dbb-b98c-5f5eb7e613b6)
-
-
+404 Not Found	Using /view-loan/<loan_id>/ literally	Replace <loan_id> with an actual number, e.g. /view-loan/7/
+loan_id = null	Loan not approved	Try lowering loan_amount or increasing income
+“Invalid protocol” in Postman	Incorrect URL	Ensure http://localhost:8000/...
+curl not found	Curl not installed	Run apt-get install curl in web container
+Database not connecting	Containers not started	Run docker compose up before API tests
 
 🧰 Useful Docker Commands
 bash
@@ -272,21 +237,14 @@ docker ps
 # Enter Django container shell
 docker compose exec web bash
 
-# Restart web container
+# Restart the web container
 docker compose restart web
 
 # Stop all containers
 docker compose down
 📜 License
 This project is licensed under the MIT License.
-Feel free to use, modify, and distribute this code for personal or educational use.
-
-![WhatsApp Image 2025-11-02 at 09 54 45_e96a6224](https://github.com/user-attachments/assets/44181ed0-48c8-465c-956b-c3f3e87cff96)
-![WhatsApp Image 2025-11-02 at 09 55 55_cbf84d90](https://github.com/user-attachments/assets/5f27423e-0816-4ed2-ac2a-4e966666ef2d)
-![WhatsApp Image 2025-11-02 at 09 55 06_50d6e742](https://github.com/user-attachments/assets/c701e34a-39bb-4565-bae2-3eb527bd6591)
-![WhatsApp Image 2025-11-02 at 09 56 19_5e0a08e7](https://github.com/user-attachments/assets/d598979d-c69d-42eb-9694-f10cc896b09f)
-![WhatsApp Image 2025-11-02 at 09 56 57_b92b3c5a](https://github.com/user-attachments/assets/c98d14fa-b092-417a-9ec5-c034c1a0248b)
-
+Feel free to use, modify, and distribute this code for personal or educational purposes.
 
 👨‍💻 Author
 Shubham Agarwal
