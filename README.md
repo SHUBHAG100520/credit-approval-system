@@ -242,6 +242,37 @@ docker compose restart web
 
 # Stop all containers
 docker compose down
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/1.jpg)
+
+### 📋 Input Form
+![Input Form](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/2.jpg)
+
+### 🤖 AI Plan Generation
+![AI Plan](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/3.jpg)
+
+### 🗣️ Voice / TTS Feature
+![Voice](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/4.jpg)
+
+### 🖼️ Image Generation
+![Image Generation](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/5.jpg)
+
+### 🌗 Dark Mode
+![Dark Mode](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/6.jpg)
+
+### 📄 Exported PDF
+![PDF Export](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/7.jpg)
+
+### 💾 Saved Plan Example
+![Saved Plan](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/8.jpg)
+
+### 💬 Motivation Quotes
+![Quotes](https://github.com/SHUBHAG100520/credit-approval-system/blob/main/ss/9.jpg)
+
 📜 License
 This project is licensed under the MIT License.
 Feel free to use, modify, and distribute this code for personal or educational purposes.
