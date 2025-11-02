@@ -243,14 +243,6 @@ docker compose restart web
 # Stop all containers
 docker compose down
 
-## 📸 Screenshots
-
-### 🏠 Home Page
-![Home Page](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/1.jpg)
-
-### 📋 Input Form
-![Input Form](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/2.jpg)
-
 ### 🤖 AI Plan Generation
 ![AI Plan](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/3.jpg)
 
@@ -271,6 +263,7 @@ docker compose down
 
 ### 💬 Motivation Quotes
 ![Motivation Quotes](https://raw.githubusercontent.com/SHUBHAG100520/credit-approval-system/main/ss/9.jpg)
+
 
 
 📜 License
