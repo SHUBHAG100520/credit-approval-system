@@ -241,9 +241,13 @@ Description	Screenshot
 ❌ Loan Rejected Response	
 ✅ Loan Approved	
 🧾 View Loan Details	
-🐳 Docker Containers Running	
+🐳 Docker Containers Running
 
-📸 Replace screenshots/... with the actual image filenames from your Postman or Docker screenshots.
+![WhatsApp Image 2025-11-02 at 09 42 05_9eee6c52](https://github.com/user-attachments/assets/67355235-ead7-4896-93ca-f9f1c32a21ee)
+![WhatsApp Image 2025-11-02 at 09 43 40_3c636fda](https://github.com/user-attachments/assets/8938808a-db38-4503-9a6e-a9206d82b4a0)
+
+
+
 
 ⚙️ Common Issues & Fixes
 Issue	Cause	Fix
@@ -252,6 +256,12 @@ loan_id = null	Loan not approved	Try reducing loan_amount or increasing income
 “Invalid protocol” in Postman	Incorrect URL	Always start with http://localhost:8000/...
 curl not found	Curl not installed in Docker	Run apt-get install curl inside the web container
 Database not connecting	Containers not running	Run docker compose up before API testing
+
+![WhatsApp Image 2025-11-02 at 09 52 11_76b99345](https://github.com/user-attachments/assets/73e2b96b-a497-427a-bbd6-3e37801f9655)
+![WhatsApp Image 2025-11-02 at 09 46 06_7393e0d7](https://github.com/user-attachments/assets/424f4fc4-05fa-4697-8630-fa6d865dcf29)
+![WhatsApp Image 2025-11-02 at 09 52 59_f9ae9110](https://github.com/user-attachments/assets/46d04d28-2f8c-4dbb-b98c-5f5eb7e613b6)
+
+
 
 🧰 Useful Docker Commands
 bash
@@ -271,13 +281,15 @@ docker compose down
 This project is licensed under the MIT License.
 Feel free to use, modify, and distribute this code for personal or educational use.
 
+![WhatsApp Image 2025-11-02 at 09 54 45_e96a6224](https://github.com/user-attachments/assets/44181ed0-48c8-465c-956b-c3f3e87cff96)
+![WhatsApp Image 2025-11-02 at 09 55 55_cbf84d90](https://github.com/user-attachments/assets/5f27423e-0816-4ed2-ac2a-4e966666ef2d)
+![WhatsApp Image 2025-11-02 at 09 55 06_50d6e742](https://github.com/user-attachments/assets/c701e34a-39bb-4565-bae2-3eb527bd6591)
+![WhatsApp Image 2025-11-02 at 09 56 19_5e0a08e7](https://github.com/user-attachments/assets/d598979d-c69d-42eb-9694-f10cc896b09f)
+![WhatsApp Image 2025-11-02 at 09 56 57_b92b3c5a](https://github.com/user-attachments/assets/c98d14fa-b092-417a-9ec5-c034c1a0248b)
+
+
 👨‍💻 Author
 Shubham Agarwal
 💼 Backend Developer | Data & API Enthusiast
 📧 shubhag0411@gmail.com
 🌐 GitHub Profile
-
-
-git add README.md
-git commit -m "Added detailed README with setup, API, and screenshots"
-git push
